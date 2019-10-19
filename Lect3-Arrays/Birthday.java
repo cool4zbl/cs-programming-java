@@ -6,7 +6,7 @@
 
 public class Birthday {
     public static void main(String[] args) {
-        int N = Integer.parseInt(args[0]);
+        int n = Integer.parseInt(args[0]);
         int trials = Integer.parseInt(args[1]);
 
         int i = 1;
@@ -19,10 +19,10 @@ public class Birthday {
                 int found = 0;
                 int enterPerson = 1;
 
-                boolean[] birthArr = new boolean[N];
+                boolean[] birthArr = new boolean[n];
 
                 while (enterPerson < i + 1) {
-                    int enterPersonBirth = (int) (Math.random() * N);
+                    int enterPersonBirth = (int) (Math.random() * n);
 
                     if (birthArr[enterPersonBirth] && enterPerson == i) {
                         found++;
