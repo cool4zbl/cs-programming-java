@@ -30,7 +30,18 @@ public class Minesweeper {
         }
          */
 
+        // Place the mines 3.
+        while (totalMines > 0) {
+            int rx = 1 + (int) (Math.random() * m);
+            int ry = 1 + (int) (Math.random() * n);
+            if (!hasMine[rx][ry]) {
+                hasMine[rx][ry] = true;
+                totalMines--;
+            }
+        }
+
         // Place the mines 1.
+        /*
         while (totalMines > 0) {
             int r = (int) (Math.random() * m * n);
             int count = 0;
@@ -45,6 +56,8 @@ public class Minesweeper {
             }
         }
 
+         */
+
         // Place the mines 2.
         /*
         for (int i = 1; i < m + 1; i++) {
@@ -55,7 +68,6 @@ public class Minesweeper {
                 }
             }
         }
-
         for (int i = 1; i < m + 1; i++) {
             for (int j = 1; j < n + 1; j++) {
                 int rx = i + (int) (Math.random() * (m - i));
@@ -74,8 +86,8 @@ public class Minesweeper {
                 if (!hasMine[i][j]) {
                     int mines = 0;
                     for (int k = i - 1; k <= i + 1; k++) {
-                        for (int l = j - 1; l <= j + 1; l++) {
-                            if (hasMine[k][l]) {
+                        for (int p = j - 1; p <= j + 1; p++) {
+                            if (hasMine[k][p]) {
                                 mines++;
                             }
                         }
