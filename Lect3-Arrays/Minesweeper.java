@@ -14,7 +14,7 @@ public class Minesweeper {
         boolean[][] hasMine = new boolean[m + 2][n + 2];
         int[][] neighboringMines = new int[m + 2][n + 2];
 
-        // Place the mines.
+        // Place the mines 0.
         // TODO: whether it is good?
         /*
         while (totalMines > 0) {
@@ -30,6 +30,23 @@ public class Minesweeper {
         }
          */
 
+        // Place the mines 1.
+        while (totalMines > 0) {
+            int r = (int) (Math.random() * m * n);
+            int count = 0;
+            for (int i = 1; i < m + 1; i++) {
+                for (int j = 1; j < n + 1; j++) {
+                    if (count == r && !hasMine[i][j]) {
+                        hasMine[i][j] = true;
+                        totalMines--;
+                    }
+                    count++;
+                }
+            }
+        }
+
+        // Place the mines 2.
+        /*
         for (int i = 1; i < m + 1; i++) {
             for (int j = 1; j < n + 1; j++) {
                 if (totalMines > 0 && !hasMine[i][j]) {
@@ -49,6 +66,7 @@ public class Minesweeper {
                 hasMine[i][j] = b;
             }
         }
+         */
 
         // Calculate the neiboring mines.
         for (int i = 1; i < m + 1; i++) {
