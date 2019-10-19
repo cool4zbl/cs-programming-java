@@ -9,36 +9,53 @@ public class Minesweeper {
         int m = Integer.parseInt(args[0]);
         int n = Integer.parseInt(args[1]);
         int minesNum = Integer.parseInt(args[2]);
-        int k = minesNum;
+        int totalMines = minesNum;
 
-        boolean[][] hasMine = new boolean[m][n];
-        int[][] neighboringMines = new int[m][n];
+        boolean[][] hasMine = new boolean[m + 2][n + 2];
+        int[][] neighboringMines = new int[m + 2][n + 2];
 
-        while (k > 0) {
-            for (int i = 0; i < m; i++) {
-                for (int j = 0; j < n; j++) {
+        while (totalMines > 0) {
+            for (int i = 1; i < m + 1; i++) {
+                for (int j = 1; j < n + 1; j++) {
                     int r = (int) (Math.random() * m * n);
                     if (r < minesNum) {
                         hasMine[i][j] = true;
-                        k--;
+                        totalMines--;
                     }
                 }
             }
         }
 
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (hasMine[i][j]) {
-                    if (i == 0 && j > 0) {
-                        a[i][j - 1] += 1;
-                        a[i][j + 1] += 1;
-                        a[i + 1][j + 1] += 1;
-                        a[i + 1][j - 1] += 1;
+        for (int i = 1; i < m + 1; i++) {
+            for (int j = 1; j < n + 1; j++) {
+                if (!hasMine[i][j]) {
+                    int mines = 0;
+                    for (int k = i - 1; k <= i + 1; k++) {
+                        for (int l = j - 1; l <= j + 1; l++) {
+                            if (hasMine[k][l]) {
+                                mines++;
+                            }
+                        }
                     }
-                    if (j == 0 &&)
+                    neighboringMines[i][j] = mines;
                 }
-
+                else {
+                    neighboringMines[i][j] = -1;
+                }
             }
+        }
+
+        for (int i = 1; i < m + 1; i++) {
+            for (int j = 1; j < n + 1; j++) {
+                if (neighboringMines[i][j] < 0) {
+                    System.out.print((j == 1 ? "" : " ") + "*" + (j == n ? "" : " "));
+                }
+                else {
+                    System.out.print((j == 1 ? "" : " ") + neighboringMines[i][j] + (j == n ? "" :
+                                                                                     " "));
+                }
+            }
+            System.out.println();
         }
 
     }
