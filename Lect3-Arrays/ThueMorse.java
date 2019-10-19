@@ -29,12 +29,9 @@ public class ThueMorse {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (morseSequence[j] == morseSequence[i]) {
-                    System.out.print("+" + (j == n - 1 ? "" : " "));
-                }
-                else {
-                    System.out.print("-" + (j == n - 1 ? "" : " "));
-                }
+                System.out.print((j == 0 ? "" : " ")
+                                         + (morseSequence[i] == morseSequence[j] ? "+" : "-")
+                                         + (j == n - 1 ? "" : " "));
             }
             System.out.println();
         }
