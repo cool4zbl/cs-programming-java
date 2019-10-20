@@ -12,6 +12,7 @@ public class Birthday {
         int i = 1;
         double count = 0.0;
         double fraction = 0;
+        int[] eachCount = new int[n + 2];
 
         while (fraction < 0.50 && i <= n) {
 
@@ -33,11 +34,11 @@ public class Birthday {
                     enterPerson++;
                     // System.out.println("enterPerson " + enterPerson);
                 }
+                eachCount[i] += found;
                 count += found;
-                fraction = count / trials;
-                // System.out.println("count " + count);
+                fraction = count / trials > 1 ? 1.0 : count / trials;
             }
-            System.out.println(i + "\t" + (int) count + "\t" + fraction);
+            System.out.println(i + "\t" + eachCount[i] + "\t" + fraction);
             i++;
         }
 
