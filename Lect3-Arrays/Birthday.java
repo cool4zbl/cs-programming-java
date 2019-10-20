@@ -13,7 +13,7 @@ public class Birthday {
         double count = 0.0;
         double fraction = 0;
 
-        while (fraction < 0.50) {
+        while (fraction < 0.50 && i <= n) {
 
             for (int j = 0; j < trials; j++) {
                 int found = 0;
@@ -31,9 +31,11 @@ public class Birthday {
                         birthArr[enterPersonBirth] = true;
                     }
                     enterPerson++;
+                    // System.out.println("enterPerson " + enterPerson);
                 }
                 count += found;
                 fraction = count / trials;
+                // System.out.println("count " + count);
             }
             System.out.println(i + "\t" + (int) count + "\t" + fraction);
             i++;

@@ -9,7 +9,6 @@ public class DiscreteDistribution {
         // number of loops
         int m = Integer.parseInt(args[0]);
         // number of values
-        // int n = args.length - 1;
         int[] sum = new int[args.length];
         sum[0] = 0;
 
