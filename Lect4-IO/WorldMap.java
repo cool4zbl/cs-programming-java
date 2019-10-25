@@ -17,6 +17,8 @@ public class WorldMap {
         StdDraw.setCanvasSize(width, height);
 
         while (!StdIn.isEmpty()) {
+            StdIn.readString();
+
             int numberOfVertices = StdIn.readInt();
             double[] verticesX = new double[numberOfVertices];
             double[] verticesY = new double[numberOfVertices];

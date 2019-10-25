@@ -28,11 +28,6 @@ public class ShannonEntropy {
             }
             entropy += p[i];
         }
-        if (Math.ceil(entropy) == entropy) {
-            StdOut.printf("%.1f", entropy);
-        }
-        else {
-            StdOut.printf("%.4f", entropy);
-        }
+        StdOut.printf("%.4f", entropy);
     }
 }
