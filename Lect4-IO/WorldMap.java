@@ -12,11 +12,11 @@ public class WorldMap {
         StdDraw.setXscale(0, width);
         StdDraw.setYscale(0, height);
 
+        StdDraw.enableDoubleBuffering();
+
         StdDraw.setCanvasSize(width, height);
-        StdOut.println("width: " + width + ", height: " + height);
 
         while (!StdIn.isEmpty()) {
-            String name = StdIn.readString();
             int numberOfVertices = StdIn.readInt();
             double[] verticesX = new double[numberOfVertices];
             double[] verticesY = new double[numberOfVertices];
@@ -28,5 +28,6 @@ public class WorldMap {
 
             StdDraw.polygon(verticesX, verticesY);
         }
+        StdDraw.show();
     }
 }

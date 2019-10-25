@@ -7,18 +7,11 @@
 public class Checkerboard {
     public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
-        double[] verticesX = new double[n];
-        double[] verticesY = new double[n];
 
         double scale = n;
         StdDraw.setScale(0, n);
 
         double r = scale / (2 * n);
-
-        for (int i = 0; i < n; i++) {
-            verticesX[i] = scale * i / n + r;
-            verticesY[i] = scale * i / n + r;
-        }
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -28,7 +21,9 @@ public class Checkerboard {
                 else {
                     StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
                 }
-                StdDraw.filledSquare(verticesX[i], verticesY[j], r);
+                double verticesX = scale * i / n + r;
+                double verticesY = scale * j / n + r;
+                StdDraw.filledSquare(verticesX, verticesY, r);
             }
         }
     }
