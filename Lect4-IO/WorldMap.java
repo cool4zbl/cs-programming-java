@@ -8,9 +8,11 @@ public class WorldMap {
     public static void main(String[] args) {
         int width = StdIn.readInt();
         int height = StdIn.readInt();
+
         StdDraw.setXscale(0, width);
         StdDraw.setYscale(0, height);
 
+        StdDraw.setCanvasSize(width, height);
         StdOut.println("width: " + width + ", height: " + height);
 
         while (!StdIn.isEmpty()) {
@@ -23,18 +25,8 @@ public class WorldMap {
                 verticesX[i] = StdIn.readDouble();
                 verticesY[i] = StdIn.readDouble();
             }
-            // for (int i = 0; i < verticesX.length; i++) {
-            //     StdOut.println("vertices: " + verticesX[i]);
-            // }
-
-            // double[] verticesX = { 100.0, 500.0, 300.0 };
-            // double[] verticesY = { 100.0, 100.0, 500.0 };
 
             StdDraw.polygon(verticesX, verticesY);
         }
-        // double[] verticesX = { 1.0, 5.0, 3.0 };
-        // double[] verticesY = { 1.0, 1.0, 5.0 };
-        // StdDraw.polygon(verticesX, verticesY);
-
     }
 }
