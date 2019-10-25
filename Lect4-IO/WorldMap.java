@@ -11,10 +11,9 @@ public class WorldMap {
 
         StdDraw.setXscale(0, width);
         StdDraw.setYscale(0, height);
+        StdDraw.setCanvasSize(width, height);
 
         StdDraw.enableDoubleBuffering();
-
-        StdDraw.setCanvasSize(width, height);
 
         while (!StdIn.isEmpty()) {
             StdIn.readString();
