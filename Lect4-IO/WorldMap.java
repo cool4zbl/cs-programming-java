@@ -9,9 +9,10 @@ public class WorldMap {
         int width = StdIn.readInt();
         int height = StdIn.readInt();
 
+        StdDraw.setCanvasSize(width, height);
+
         StdDraw.setXscale(0, width);
         StdDraw.setYscale(0, height);
-        StdDraw.setCanvasSize(width, height);
 
         StdDraw.enableDoubleBuffering();
 
