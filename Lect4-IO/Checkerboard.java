@@ -15,7 +15,7 @@ public class Checkerboard {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (i == j || Math.abs(i - j) % 2 == 0) {
+                if (Math.abs(i - j) % 2 == 0) {
                     StdDraw.setPenColor(StdDraw.BLUE);
                 }
                 else {
