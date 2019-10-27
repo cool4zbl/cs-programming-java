@@ -24,7 +24,7 @@ public class Divisors {
     public static int lcm(int a, int b) {
         int gcd = gcd(a, b);
         if (gcd == 0) return 0;
-        return Math.abs(a) * Math.abs(b) / gcd;
+        return Math.abs(a) / gcd * Math.abs(b);
     }
 
     // Returns true if a and b are relatively prime; false otherwise.
@@ -37,8 +37,8 @@ public class Divisors {
     public static int totient(int n) {
         if (n <= 0) return 0;
 
-        int count = 0;
-        for (int i = 1; i < n; i++) {
+        int count = 1;
+        for (int i = 2; i < n; i++) {
             if (areRelativelyPrime(n, i)) count++;
         }
         return count;
