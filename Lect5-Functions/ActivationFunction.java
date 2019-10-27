@@ -48,11 +48,11 @@ public class ActivationFunction {
     public static void main(String[] args) {
         double x = Double.parseDouble(args[0]);
 
-        StdOut.printf("heaviside(" + x + ")\t = \t" + heaviside(x) + "\n");
-        StdOut.printf("sigmoid(" + x + ")\t = \t" + sigmoid(x) + "\n");
-        StdOut.printf("tanh(" + x + ")\t = \t" + tanh(x) + "\n");
-        StdOut.printf("softsign(" + x + ")\t = \t" + softsign(x) + "\n");
-        StdOut.printf("sqnl(" + x + ")\t = \t" + sqnl(x) + "\n");
+        StdOut.print("heaviside(" + x + ")\t = \t" + heaviside(x) + "\n");
+        StdOut.print("sigmoid(" + x + ")\t = \t" + sigmoid(x) + "\n");
+        StdOut.print("tanh(" + x + ")\t = \t" + tanh(x) + "\n");
+        StdOut.print("softsign(" + x + ")\t = \t" + softsign(x) + "\n");
+        StdOut.print("sqnl(" + x + ")\t = \t" + sqnl(x) + "\n");
 
     }
 }
