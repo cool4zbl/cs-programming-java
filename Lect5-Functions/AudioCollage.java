@@ -12,7 +12,10 @@ public class AudioCollage {
         if (alpha < 0) alpha = 0;
 
         for (int i = 0; i < a.length; i++) {
-            amp[i] = alpha * a[i];
+            double ap = alpha * a[i];
+            if (ap > 1) amp[i] = 1;
+            else if (ap < -1) amp[i] = -1;
+            else amp[i] = ap;
         }
         return amp;
     }
@@ -23,8 +26,8 @@ public class AudioCollage {
         for (int i = 0; i < a.length; i++) {
             rev[i] = a[i];
         }
-        for (int i = 0; i < a.length / 2; i++) {
-            rev[i] = a[a.length - 1 - i];
+        for (int i = 0; i < rev.length / 2; i++) {
+            rev[i] = rev[rev.length - 1 - i];
         }
         return rev;
     }
@@ -52,7 +55,15 @@ public class AudioCollage {
         double[] c = new double[len];
         for (int i = 0; i < len; i++) {
             if (i < Math.min(m, n)) {
-                c[i] = a[i] + b[i];
+                if (a[i] + b[i] > 1) {
+                    c[i] = 1;
+                }
+                else if (a[i] + b[i] < -1) {
+                    c[i] = -1;
+                }
+                else {
+                    c[i] = a[i] + b[i];
+                }
             }
             else {
                 if (isALongerThanB) {
