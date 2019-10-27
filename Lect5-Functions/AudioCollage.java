@@ -12,22 +12,22 @@ public class AudioCollage {
         if (alpha < 0) alpha = 0;
 
         for (int i = 0; i < a.length; i++) {
-            double ap = alpha * a[i];
-            if (ap > 1) amp[i] = 1;
-            else if (ap < -1) amp[i] = -1;
-            else amp[i] = ap;
+            amp[i] = alpha * a[i];
         }
         return amp;
     }
 
     // Returns a new array that is the reverse of a[]
     public static double[] reverse(double[] a) {
-        double[] rev = new double[a.length];
-        for (int i = 0; i < a.length; i++) {
+        int len = a.length;
+        double[] rev = new double[len];
+        for (int i = 0; i < len; i++) {
             rev[i] = a[i];
         }
-        for (int i = 0; i < rev.length / 2; i++) {
-            rev[i] = rev[rev.length - 1 - i];
+        for (int i = 0; i < len / 2; i++) {
+            double temp = rev[i];
+            rev[i] = rev[len - 1 - i];
+            rev[len - 1 - i] = temp;
         }
         return rev;
     }
@@ -55,15 +55,7 @@ public class AudioCollage {
         double[] c = new double[len];
         for (int i = 0; i < len; i++) {
             if (i < Math.min(m, n)) {
-                if (a[i] + b[i] > 1) {
-                    c[i] = 1;
-                }
-                else if (a[i] + b[i] < -1) {
-                    c[i] = -1;
-                }
-                else {
-                    c[i] = a[i] + b[i];
-                }
+                c[i] = a[i] + b[i];
             }
             else {
                 if (isALongerThanB) {
@@ -97,6 +89,8 @@ public class AudioCollage {
                 };
         double[][] playList = new double[files.length][];
 
+        playList[0] = mix(StdAudio.read("beatbox.wav"), StdAudio.read("piano.wav"));
+
         for (int i = 0; i < playList.length; i++) {
             if (i % 2 == 0) {
                 playList[i] = reverse(
@@ -109,8 +103,11 @@ public class AudioCollage {
         }
 
         for (int i = 0; i < playList.length; i++) {
+            for (int j = 0; j < playList[i].length; j++) {
+                playList[i][j] = playList[i][j] > 1.0 ? 1.0 :
+                                 (playList[i][j] < -1 ? -1.0 : playList[i][j]);
+            }
             StdAudio.play(playList[i]);
         }
-
     }
 }
