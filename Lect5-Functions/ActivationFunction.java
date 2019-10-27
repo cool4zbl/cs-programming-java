@@ -5,6 +5,7 @@
  **************************************************************************** */
 
 public class ActivationFunction {
+
     // Returns the Heaviside funciton of x.
     public static double heaviside(double x) {
         if (Double.isNaN(x)) return Double.NaN;
@@ -24,12 +25,18 @@ public class ActivationFunction {
     // Returns the hyperbolic tangent of x.
     public static double tanh(double x) {
         if (Double.isNaN(x)) return Double.NaN;
+        if (x >= 20) return 1.0;
+        if (x <= -20) return -1.0;
+
         return (Math.exp(x) - Math.exp(-1 * x)) / (Math.exp(x) + Math.exp(-1 * x));
     }
 
     // Returns the softsign function of x.
     public static double softsign(double x) {
         if (Double.isNaN(x)) return Double.NaN;
+        if (x == Double.POSITIVE_INFINITY) return 1;
+        if (x == Double.NEGATIVE_INFINITY) return -1;
+
         return x / (1 + Math.abs(x));
     }
 
