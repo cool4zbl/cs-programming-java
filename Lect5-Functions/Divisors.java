@@ -5,6 +5,7 @@
  **************************************************************************** */
 
 public class Divisors {
+
     // Returns the greatest common divisor of a and b.
     public static int gcd(int a, int b) {
         int absA = Math.abs(a);
