@@ -24,6 +24,7 @@ public class Divisors {
     public static int lcm(int a, int b) {
         int gcd = gcd(a, b);
         if (gcd == 0) return 0;
+        // Dividing first to preveent the overflow.
         return Math.abs(a) / gcd * Math.abs(b);
     }
 

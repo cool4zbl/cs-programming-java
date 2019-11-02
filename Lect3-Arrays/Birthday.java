@@ -1,7 +1,7 @@
 /* *****************************************************************************
  *  Name:              Alan Turing
  *  Coursera User ID:  123456
- *  Last modified:     10/18/2019
+ *  Last modified:     11/02/2019
  **************************************************************************** */
 
 public class Birthday {
@@ -10,35 +10,30 @@ public class Birthday {
         int trials = Integer.parseInt(args[1]);
 
         int i = 1;
-        double count = 0.0;
         double fraction = 0;
-        int[] eachCount = new int[n + 2];
+        double[] peopleCount = new double[n + 2];
 
         while (fraction < 0.50 && i <= n) {
-
             for (int j = 0; j < trials; j++) {
                 int found = 0;
-                int enterPerson = 1;
-
                 boolean[] birthArr = new boolean[n];
+                int enterPeople = 1;
 
-                while (enterPerson < i + 1) {
-                    int enterPersonBirth = (int) (Math.random() * n);
-
-                    if (birthArr[enterPersonBirth] && enterPerson == i) {
+                while (enterPeople < i) {
+                    int birthday = (int) (Math.random() * n);
+                    if (birthArr[birthday]) {
                         found++;
                     }
                     else {
-                        birthArr[enterPersonBirth] = true;
+                        birthArr[birthday] = true;
                     }
-                    enterPerson++;
-                    // System.out.println("enterPerson " + enterPerson);
+                    enterPeople++;
                 }
-                eachCount[i] += found;
-                count += found;
-                fraction = count / trials > 1 ? 1.0 : count / trials;
+
+                peopleCount[i] += found;
+                fraction = peopleCount[i] / trials > 1 ? 1.0 : peopleCount[i] / trials;
             }
-            System.out.println(i + "\t" + eachCount[i] + "\t" + fraction);
+            System.out.println(i + "\t" + peopleCount[i] + "\t" + fraction);
             i++;
         }
 
