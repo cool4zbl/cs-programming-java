@@ -19,21 +19,20 @@ public class Birthday {
                 boolean[] birthArr = new boolean[n];
                 int enterPeople = 1;
 
-                while (enterPeople < i) {
+                while (enterPeople < i + 1) {
                     int birthday = (int) (Math.random() * n);
-                    if (birthArr[birthday]) {
-                        found++;
-                    }
-                    else {
-                        birthArr[birthday] = true;
-                    }
                     enterPeople++;
+
+                    if (!birthArr[birthday]) birthArr[birthday] = true;
+                    else found++;
                 }
 
                 peopleCount[i] += found;
-                fraction = peopleCount[i] / trials > 1 ? 1.0 : peopleCount[i] / trials;
             }
-            System.out.println(i + "\t" + peopleCount[i] + "\t" + fraction);
+            fraction = peopleCount[i] / trials;
+
+            System.out.println(
+                    i + "\t" + (int) (peopleCount[i] - peopleCount[i - 1]) + "\t" + fraction);
             i++;
         }
 
