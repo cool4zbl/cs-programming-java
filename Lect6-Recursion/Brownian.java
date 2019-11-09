@@ -2,6 +2,8 @@
  *  Name:              Alan Turing
  *  Coursera User ID:  123456
  *  Last modified:     11/03/2019
+ *  Brownian.java produces a function graph that approximates a simple example of
+ *  fractional Brownian motion known as Brownian bridge.
  **************************************************************************** */
 
 public class Brownian {
