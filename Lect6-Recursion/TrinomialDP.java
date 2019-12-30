@@ -6,23 +6,35 @@
 
 public class TrinomialDP {
     public static long trinomial(int n, int k) {
-        long[][] tri = new long[n + 2][k + 2];
+        long[][] tri = new long[n + 3][k + 3];
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < k; j++) {
-                if (j == 0 && i == 0) {
-                    tri[i][j] = 1;
+        tri[0][0] = 1;
+        tri[1][0] = 1;
+
+        for (int j = 1; j <= k; j++) tri[0][j] = 0;
+
+        // Why `n+1`?
+        for (int i = 1; i <= n + 1; i++) {
+            for (int j = 0; j <= k + 1; j++) {
+                if (j == 0) {
+                    tri[i][j] = tri[i - 1][1] + tri[i - 1][0] + tri[i - 1][1];
                 }
-                else if (j > i) tri[i][j] = 0;
-                else tri[i][j] = tri[i - 1][j - 1] + tri[i - 1][j] + tri[i - 1][j + 1];
+                else if (j > i) {
+                    tri[i][j] = 0;
+                    // continue;
+                }
+                else {
+                    tri[i][j] = tri[i - 1][j - 1] + tri[i - 1][j] + tri[i - 1][j + 1];
+                }
             }
         }
-        return tri[0][0];
+        return tri[n][k];
     }
 
     public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
         int k = Integer.parseInt(args[1]);
+        if (k < 0) k = -k;
 
         StdOut.println(trinomial(n, k));
     }

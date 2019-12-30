@@ -2,6 +2,12 @@
  *  Name:              Alan Turing
  *  Coursera User ID:  123456
  *  Last modified:     11/09/2019
+ *
+ *  Write a program Permutations.java that take an integer command-line argument n and
+ *  prints all n! permutations of the n letters starting at a (assume that n is no greater than 26).
+ *  A permutation of n elements is one of the n! possible orderings of the elements.
+ *  As an example, when n = 3 you should get the following output (but do not worry about the order in which you enumerate them):
+ *  bca cba cab acb bac abc
  **************************************************************************** */
 
 public class Permutations {
@@ -10,7 +16,7 @@ public class Permutations {
         perm1("", s);
     }
 
-    public static void perm1(String prefix, String s) {
+    private static void perm1(String prefix, String s) {
         int n = s.length();
         if (n == 0) {
             StdOut.println(prefix);
@@ -31,7 +37,7 @@ public class Permutations {
         perm2(a, n);
     }
 
-    public static void perm2(char[] a, int n) {
+    private static void perm2(char[] a, int n) {
         if (n == 1) {
             StdOut.println(new String(a));
             return;
@@ -41,10 +47,9 @@ public class Permutations {
             perm2(a, n - 1);
             swap(a, i, n - 1);
         }
-
     }
 
-    public static char[] swap(char[] a, int i, int j) {
+    private static char[] swap(char[] a, int i, int j) {
         char temp = a[i];
         a[i] = a[j];
         a[j] = temp;

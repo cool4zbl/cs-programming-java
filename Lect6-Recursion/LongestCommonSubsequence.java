@@ -34,7 +34,7 @@ public class LongestCommonSubsequence {
         int[][] opt = new int[m + 1][n + 1];
 
         // Method 1.
-        // calculate `m` times.
+        // calculate `m * n` times.
         // for (int i = 1; i <= m; i++) {
         //     for (int j = 1; j <= n; j++) {
         //         if (s.charAt(i - 1) == t.charAt(j - 1))
@@ -46,7 +46,7 @@ public class LongestCommonSubsequence {
         // return opt[m][n];
 
         // Method 2. Backwards
-        // Also calculate `m` times.
+        // Also calculate `m * n` times.
         for (int i = m - 1; i >= 0; i--) {
             for (int j = n - 1; j >= 0; j--) {
                 if (s.charAt(i) == t.charAt(j))
