@@ -1,7 +1,7 @@
 /* *****************************************************************************
  *  Name:              Alan Turing
  *  Coursera User ID:  123456
- *  Last modified:     1/1/2019
+ *  Last modified:     12/30/2019
  **************************************************************************** */
 
 public class TrinomialDP {
@@ -21,7 +21,6 @@ public class TrinomialDP {
                 }
                 else if (j > i) {
                     tri[i][j] = 0;
-                    // continue;
                 }
                 else {
                     tri[i][j] = tri[i - 1][j - 1] + tri[i - 1][j] + tri[i - 1][j + 1];
