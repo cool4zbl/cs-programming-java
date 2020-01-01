@@ -14,14 +14,22 @@
  * Transfer (recursively) the k smallest discs to the destination pole.
  */
 
-// *  Move disc 1 from A to C
+// Revers n discs = Revers k dicks from A to B + Hanoi(n - k) from A to D + Revers k dicks from B to A.
+//    while k == n + 1 - Math.sqrt(2n + 1).
+
 public class RevesPuzzle {
     private static void revers(int n, String from, String temp1, String temp2, String to) {
         if (n == 0) return;
         int k = (int) Math.round(n + 1 - Math.sqrt(2 * n + 1));
 
+        /* transfer (recursively) the k smllest discs. */
+        // 子问题: 利用 4-poles, 递归地移动 k 个片, from A => (C/D) => B
         revers(k, from, to, temp2, temp1);
+
+        // 3-pole of Hanoi.
         hanoi(n, k, from, temp2, to);
+
+        // 子问题: 利用 4-poles, 递归地移动 k 个片, from B => (C/A) => D
         revers(k, temp1, from, temp2, to);
     }
 
