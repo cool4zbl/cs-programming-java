@@ -25,7 +25,13 @@ public class Inversions {
 
     // Return a permutation of length n with exactly k inversions.
     public static int[] generate(int n, long k) {
+        int MAX_COUNT = n * (n - 1) / 2;
+        if (k > MAX_COUNT) {
+            throw new IllegalArgumentException();
+        }
+
         int[] a = new int[n];
+
         // if (k == 0 && n == 0) {
         //     return a;
         // }
@@ -37,7 +43,7 @@ public class Inversions {
             return a;
         }
 
-        if (k == n * (n - 1) / 2) {
+        if (k == MAX_COUNT) {
             for (int i = 0; i < n; i++) {
                 a[i] = n - 1 - i;
             }
