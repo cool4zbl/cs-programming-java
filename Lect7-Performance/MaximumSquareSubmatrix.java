@@ -81,10 +81,6 @@ public class MaximumSquareSubmatrix {
             }
         }
 
-        for (int i = 0; i <= n; i++) {
-            StdOut.print(dp[i] + " ");
-        }
-
         return maxLen;
     }
 
