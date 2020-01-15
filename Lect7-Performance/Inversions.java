@@ -12,7 +12,7 @@ public class Inversions {
 
     // Return the number of inversions in the permutation a[].
     public static long count(int[] a) {
-        int count = 0;
+        long count = 0;
         for (int i = 0; i < a.length; i++) {
             for (int j = i + 1; j < a.length; j++) {
                 if (a[i] > a[j]) {
@@ -25,7 +25,8 @@ public class Inversions {
 
     // Return a permutation of length n with exactly k inversions.
     public static int[] generate(int n, long k) {
-        int MAX_COUNT = n * (n - 1) / 2;
+        long MAX_COUNT = (n / 2) * (n - 1);
+
         if (k > MAX_COUNT) {
             throw new IllegalArgumentException();
         }
