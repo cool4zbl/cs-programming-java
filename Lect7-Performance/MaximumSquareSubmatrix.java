@@ -11,7 +11,7 @@ public class MaximumSquareSubmatrix {
     /**
      * 第1种，dp 矩阵为 (n+1) * (n+1), 第一行 & 列为 base cases.
      */
-    public static int size3(int[][] a) {
+    private static int size3(int[][] a) {
         int n = a.length;
         int[][] dp = new int[n + 1][n + 1];
         int maxLen = 0;
@@ -32,7 +32,7 @@ public class MaximumSquareSubmatrix {
     /**
      * 第二种，dp 矩阵为 n * n
      */
-    public static int size2(int[][] a) {
+    private static int size2(int[][] a) {
         int n = a.length;
         int[][] dp = new int[n][n];
         int maxLen = 0;
@@ -62,6 +62,8 @@ public class MaximumSquareSubmatrix {
      * @return maxLen
      */
     public static int size(int[][] a) {
+        if (a.length == 0) return 0;
+
         int n = a.length;
         int[] dp = new int[n + 1];
         int maxLen = 0;

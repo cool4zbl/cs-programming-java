@@ -32,10 +32,6 @@ public class Inversions {
 
         int[] a = new int[n];
 
-        // if (k == 0 && n == 0) {
-        //     return a;
-        // }
-
         if (k == 0) {
             for (int i = 0; i < n; i++) {
                 a[i] = i;
@@ -64,7 +60,7 @@ public class Inversions {
                 start++;
             }
             else {
-                a[pos] = pos;
+                a[end] = pos;
                 end--;
             }
             pos--;

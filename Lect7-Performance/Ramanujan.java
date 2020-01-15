@@ -32,7 +32,6 @@ public class Ramanujan {
             if (passed) break;
         }
 
-        // StdOut.println("count " + count);
         return passed;
     }
 
