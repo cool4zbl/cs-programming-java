@@ -1,0 +1,45 @@
+Classic image-processing images
+=============================================================================================
+These are the classic images that have been used for years in signal processing.
+They are provided courtesy of the Signal and Image Processing Institute at the
+University of Southern California. The copyright status of these images in unclear.
+
+image           dimensions
+----------------------------
+baboon.png      298-by-298
+f16.png         512-by-512
+fishingboat.png 512-by-512
+peppers.png     512-by-512
+pentagon.png    1024-by-1024
+
+
+Other images
+=============================================================================================
+sunflowers.png (150-by-92)
+Sunflowers in Fargo, North Dakota.
+Photo by Bruce Fritz, Agricultural Research Service, USDA.
+Copyright: public domain
+https://www.ars.usda.gov/oc/images/photos/jan95/k5751-1/
+
+penguins.png (301-by-201)
+Adelie penguins on Torgerson Island, near the Antarctic
+Photo by Peter Rejcek, National Science Foundation
+Copyright: United States Antarctic Photo Library Usage Agreement
+https://photolibrary.usap.gov
+
+earth.png (320-by-320)
+A Sky View of Earth From Suomi NPP
+The image was created by the Ocean Biology Processing Group at NASA's Goddard Space Flight Center in Greenbelt, Maryland.
+Copyright: public domain
+This composite image of southern Africa and the surrounding oceans was captured by six orbits of the NASA/NOAA Suomi National Polar-orbiting Partnership spacecraft on April 9, 2015, by the Visible Infrared Imaging Radiometer Suite (VIIRS) instrument. 
+https://images.nasa.gov/details-a-sky-view-of-earth-from-suomi-npp_16611703184_o.html
+
+shield.png (695-by-860)
+Princeton University shield
+Copyright: The Trustees of Princeton University
+https://communications.princeton.edu/guides-tools/logo-graphic-identity
+
+6-by-5.png (6-by-5)
+sample grayscale values used in assignment specification
+
+pipe.png
