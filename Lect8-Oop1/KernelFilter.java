@@ -69,7 +69,7 @@ public class KernelFilter {
         return kernel(picture, weights);
     }
 
-    public static Picture identity(Picture picture) {
+    private static Picture identity(Picture picture) {
         double[][] weights = {
                 { 0, 0, 0 },
                 { 0, 1, 0 },
