@@ -22,7 +22,7 @@ public class Huntingtons {
         int count = 0;
 
         int i = 0;
-        while (i < n - 3) {
+        while (i <= n - 3) {
             if (dna.charAt(i) == 'C') {
                 String condon = dna.substring(i, i + 3);
                 if (condon.equals("CAG")) {
