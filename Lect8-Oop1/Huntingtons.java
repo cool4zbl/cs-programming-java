@@ -17,12 +17,13 @@ public class Huntingtons {
 
     // Returns the maximum number of consecutive repeats of CAG in the DNA string.
     public static int maxRepeats(String dna) {
-        // if (dna.length() % 3 != 0) return 0;
+
+        int n = dna.length();
         int maxCount = 0;
         int count = 0;
 
-        for (int i = 0; i < dna.length(); i++) {
-            if (dna.substring(i, i + 1).equals("C") && dna.substring(i).length() >= 3) {
+        for (int i = 0; i < n; i++) {
+            if (dna.charAt(i) == 'C' && (n - i) >= 3) {
 
                 String condon = dna.substring(i, i + 3);
 
@@ -30,9 +31,7 @@ public class Huntingtons {
                     count++;
                     maxCount = Math.max(maxCount, count);
                 }
-                else {
-                    count = 0;
-                }
+                else count = 0;
             }
         }
         return maxCount;
@@ -59,7 +58,6 @@ public class Huntingtons {
 
         String data = in.readAll();
         String dna = removeWhitespace(data);
-        // StdOut.println(dna);
         int maxRepeats = maxRepeats(dna);
 
         StdOut.println("max repeats = " + maxRepeats);
