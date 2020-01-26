@@ -18,6 +18,10 @@ public class Clock {
 
     // Creates a clock whose initial time is specified as a string, using the format HH:MM.
     public Clock(String s) {
+        if (!s.contains(":")) {
+            throw new IllegalArgumentException();
+        }
+
         String[] a = s.split(":");
         String hourStr = a[0];
         String minStr = a[1];
@@ -57,12 +61,15 @@ public class Clock {
 
     // Adds 1 minute to the time on this clock.
     public void tic() {
-        if (this.hour == 23 && this.min == 59) {
+        int MINUTES_PER_HOUR = 60;
+        int HOURS_PER_DAY = 24;
+
+        if (this.hour == HOURS_PER_DAY - 1 && this.min == MINUTES_PER_HOUR - 1) {
             this.hour = 0;
             this.min = 0;
             return;
         }
-        if (this.min == 59) {
+        if (this.min == MINUTES_PER_HOUR - 1) {
             this.hour += 1;
             this.min = 0;
             return;
@@ -72,23 +79,28 @@ public class Clock {
 
     // Adds Δ minutes to the time on this clock.
     public void toc(int delta) {
-        if (delta < 0) throw new IllegalArgumentException("Delta cannot be negative");
-        int incH = delta / 60;
-        int incM = delta % 60;
+        int MINUTES_PER_HOUR = 60;
+        int HOURS_PER_DAY = 24;
 
-        this.hour = (this.hour + incH + (this.min + incM) >= 60 ? 1 : 0) % 24;
-        this.min = (this.min + incM) % 60;
+        if (delta < 0) throw new IllegalArgumentException("Delta cannot be negative");
+        int incH = delta / MINUTES_PER_HOUR;
+        int incM = delta % MINUTES_PER_HOUR;
+
+        this.hour = (this.hour + incH) % HOURS_PER_DAY;
+        if (this.min + incM >= MINUTES_PER_HOUR) this.hour += 1;
+        this.min = (this.min + incM) % MINUTES_PER_HOUR;
     }
 
     // Test client (see below).
     public static void main(String[] args) {
         Clock a = new Clock(23, 59);
-        Clock b = new Clock("22:59");
+        Clock b = new Clock("01:59");
 
         StdOut.println(a + " is earlier than " + b + "? " + a.isEarlierThan(b));
         a.tic();
         StdOut.println("a tic: " + a);
-        b.toc(131);
-        StdOut.println("b toc 121 mins: " + b);
+        int delta = 60;
+        b.toc(delta);
+        StdOut.println("b toc + " + delta + " mins: " + b);
     }
 }
