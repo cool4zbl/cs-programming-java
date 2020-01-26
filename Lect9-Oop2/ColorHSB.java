@@ -5,14 +5,14 @@
  **************************************************************************** */
 
 public class ColorHSB {
-    private int hue;
-    private int sat;
-    private int bright;
+    private final int hue;
+    private final int sat;
+    private final int bright;
 
     // Creates a color with hue h, saturation s, and brightness b.
     public ColorHSB(int h, int s, int b) {
         if (0 > h || h > 359 || 0 > s || s > 100 || 0 > b || b > 100) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Please check the format of input");
         }
         hue = h;
         sat = s;
@@ -74,6 +74,6 @@ public class ColorHSB {
                 closetColor = curColor;
             }
         }
-        StdOut.println(closetColorName + closetColor);
+        StdOut.println(closetColorName + " " + closetColor);
     }
 }
