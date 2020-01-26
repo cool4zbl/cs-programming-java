@@ -22,9 +22,9 @@ public class Clock {
             throw new IllegalArgumentException();
         }
 
-        String[] a = s.split(":");
-        String hourStr = a[0];
-        String minStr = a[1];
+        int i = s.indexOf(":");
+        String hourStr = s.substring(0, i);
+        String minStr = s.substring(i + 1);
 
         if (hourStr.length() != 2 || minStr.length() != 2) {
             throw new IllegalArgumentException();
@@ -87,19 +87,22 @@ public class Clock {
         int incM = delta % MINUTES_PER_HOUR;
 
         this.hour = (this.hour + incH) % HOURS_PER_DAY;
-        if (this.min + incM >= MINUTES_PER_HOUR) this.hour += 1;
+        if (this.min + incM >= MINUTES_PER_HOUR) {
+            this.hour += 1;
+            this.hour = this.hour % HOURS_PER_DAY;
+        }
         this.min = (this.min + incM) % MINUTES_PER_HOUR;
     }
 
     // Test client (see below).
     public static void main(String[] args) {
-        Clock a = new Clock(23, 59);
-        Clock b = new Clock("01:59");
+        Clock a = new Clock(0, 50);
+        Clock b = new Clock("12:45");
 
         StdOut.println(a + " is earlier than " + b + "? " + a.isEarlierThan(b));
         a.tic();
         StdOut.println("a tic: " + a);
-        int delta = 60;
+        int delta = 61;
         b.toc(delta);
         StdOut.println("b toc + " + delta + " mins: " + b);
     }
