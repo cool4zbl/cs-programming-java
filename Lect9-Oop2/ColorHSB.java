@@ -5,13 +5,15 @@
  **************************************************************************** */
 
 public class ColorHSB {
+    private static final int ARCH_FULL_CIRCLE = 360;
+
     private final int hue;
     private final int sat;
     private final int bright;
 
     // Creates a color with hue h, saturation s, and brightness b.
     public ColorHSB(int h, int s, int b) {
-        if (0 > h || h > 359 || 0 > s || s > 100 || 0 > b || b > 100) {
+        if (0 > h || h >= ARCH_FULL_CIRCLE || 0 > s || s > 100 || 0 > b || b > 100) {
             throw new IllegalArgumentException("Please check the format of input");
         }
         hue = h;
@@ -44,7 +46,7 @@ public class ColorHSB {
 
         return Math.min(
                 (h1 - h2) * (h1 - h2),
-                (360 - Math.abs(h1 - h2)) * (360 - Math.abs(h1 - h2))
+                (ARCH_FULL_CIRCLE - Math.abs(h1 - h2)) * (ARCH_FULL_CIRCLE - Math.abs(h1 - h2))
         ) + (s1 - s2) * (s1 - s2) + (b1 - b2) * (b1 - b2);
     }
 
@@ -56,7 +58,7 @@ public class ColorHSB {
 
         ColorHSB color = new ColorHSB(h, s, b);
 
-        int minDistance = 360 * 360 + 100 * 100 * 2;
+        int minDistance = ARCH_FULL_CIRCLE * ARCH_FULL_CIRCLE + 100 * 100 * 2;
         String closetColorName = "";
         ColorHSB closetColor = color;
 

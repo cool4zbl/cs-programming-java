@@ -5,6 +5,9 @@
  **************************************************************************** */
 
 public class Clock {
+    private static final int MINUTES_PER_HOUR = 60;
+    private static final int HOURS_PER_DAY = 60;
+
     private int hour;
     private int min;
 
@@ -22,7 +25,7 @@ public class Clock {
             throw new IllegalArgumentException();
         }
 
-        int i = s.indexOf(":");
+        int i = s.indexOf(':');
         String hourStr = s.substring(0, i);
         String minStr = s.substring(i + 1);
 
@@ -38,8 +41,8 @@ public class Clock {
         }
     }
 
-    private static boolean verify(int h, int m) {
-        if (h > 23 || h < 0 || m < 0 || m > 59) {
+    private boolean verify(int h, int m) {
+        if (h >= HOURS_PER_DAY || h < 0 || m < 0 || m >= MINUTES_PER_HOUR) {
             throw new IllegalArgumentException("Please check the format of your inputs!");
         }
         return true;
@@ -61,9 +64,6 @@ public class Clock {
 
     // Adds 1 minute to the time on this clock.
     public void tic() {
-        int MINUTES_PER_HOUR = 60;
-        int HOURS_PER_DAY = 24;
-
         if (this.hour == HOURS_PER_DAY - 1 && this.min == MINUTES_PER_HOUR - 1) {
             this.hour = 0;
             this.min = 0;
@@ -79,9 +79,6 @@ public class Clock {
 
     // Adds Δ minutes to the time on this clock.
     public void toc(int delta) {
-        int MINUTES_PER_HOUR = 60;
-        int HOURS_PER_DAY = 24;
-
         if (delta < 0) throw new IllegalArgumentException("Delta cannot be negative");
         int incH = delta / MINUTES_PER_HOUR;
         int incM = delta % MINUTES_PER_HOUR;
@@ -99,7 +96,7 @@ public class Clock {
         Clock a = new Clock(0, 50);
         Clock b = new Clock("12:45");
 
-        StdOut.println(a + " is earlier than " + b + "? " + a.isEarlierThan(b));
+        StdOut.println("Is " + a + " earlier than " + b + "? " + a.isEarlierThan(b));
         a.tic();
         StdOut.println("a tic: " + a);
         int delta = 61;
