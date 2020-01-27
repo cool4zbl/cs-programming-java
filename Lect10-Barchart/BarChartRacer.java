@@ -10,6 +10,9 @@ public class BarChartRacer {
     public static void main(String[] args) {
         // StdAudio.loop("soundtrackA.wav");
 
+        StdDraw.setCanvasSize(1000, 700);
+        StdDraw.enableDoubleBuffering();
+
         String filename = args[0];
         int k = Integer.parseInt(args[1]);
 
@@ -18,11 +21,10 @@ public class BarChartRacer {
         String title = in.readLine();
         String xAxis = in.readLine();
         String source = in.readLine();
+        in.readLine(); // blank line
 
+        BarChart chart = new BarChart(title, xAxis, source);
         while (in.hasNextLine()) {
-            BarChart chart = new BarChart(title, xAxis, source);
-
-            in.readLine(); // blank line
             int nums = Integer.parseInt(in.readLine());
 
             Bar[] bars = new Bar[nums];
@@ -32,7 +34,6 @@ public class BarChartRacer {
                 String temp = in.readLine();
                 String[] a = temp.split(",");
                 // { Year/Date, name, country, value, category }
-                // chart.add("Tokyo",       38194, "East Asia");
                 bars[i] = new Bar(a[1], Integer.parseInt(a[3]), a[4]);
                 caption = a[0];
             }
@@ -50,14 +51,14 @@ public class BarChartRacer {
                 chart.add(bars[i].getName(), bars[i].getValue(), bars[i].getCategory());
             }
 
-            StdDraw.setCanvasSize(1000, 700);
-            StdDraw.enableDoubleBuffering();
-
             StdDraw.clear();
             chart.draw();
             StdDraw.show();
-            StdDraw.pause(300);
+            StdDraw.pause(1);
             chart.reset();
+
+            in.readLine(); // blank line
         }
+        chart.reset();
     }
 }
